@@ -1,0 +1,26 @@
+{
+  "name": "webgl-webworker-raf",
+  "version": "0.0.1",
+  "description": "An example of a Three.js scene managed by @vkammerer/redux-postmessage-raf",
+  "scripts": {
+    "clean": "find docs | grep '.*\\.js$' | xargs rm",
+    "dev": "node_modules/.bin/webpack-dev-server --devtool cheap-module-source-map --content-base docs --watch-content-base",
+    "build": "node_modules/.bin/webpack --devtool inline-source-map --define process.env.NODE_ENV=\"'production'\"",
+    "prod": "npm run clean && npm run build"
+  },
+  "author": "Vincent Kammerer <vkammerer@gmail.com> (http://vincent-kammerer.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "@vkammerer/redux-postmessage-raf": "0.0.6",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-env": "^1.4.0",
+    "redux": "^3.6.0",
+    "redux-logger": "^3.0.6",
+    "three": "^0.85.2",
+    "webpack": "^2.6.0",
+    "webpack-dev-server": "^2.4.5",
+    "worker-loader": "^0.8.0"
+  }
+}
