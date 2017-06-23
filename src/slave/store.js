@@ -16,7 +16,7 @@ const reducers = combineReducers({
 const messagerMiddleware = createWorkerMiddleware({ dispatchAfterPong: true });
 
 const logger = createLogger({
-  predicate: () => false,
+  predicate: (getState, action) => action.type !== "PONG_AFTER",
   collapsed: true
 });
 

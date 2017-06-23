@@ -1,13 +1,13 @@
 const defaultState = {
-  count: 0
+  color: "#FFF"
 };
 
-export const click = (state = defaultState, action) => {
+export const css = (state = defaultState, action) => {
   switch (action.type) {
-    case "CLICK": {
+    case "COLOR": {
       return {
         ...state,
-        count: state.count + 1
+        color: action.payload
       };
     }
     default:

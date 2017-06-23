@@ -1,14 +1,32 @@
+import { sleep } from "../common/utils/sleep";
+import { getRandomColor } from "../common/utils/color";
 import { store } from "./store";
 
-let currentState = { ping: 0 };
+let currentState = {
+  ping: { count: 0 },
+  click: { count: 0 }
+};
 let state;
 
 store.subscribe(() => {
   state = store.getState();
+  if (state.click.count !== currentState.click.count) postColor();
   if (state.ping.count !== currentState.ping.count)
     postRotation(state.ping.count);
   currentState = state;
 });
+
+const postColor = () => {
+  sleep(29);
+  store.dispatch({
+    type: "COLOR",
+    payload: getRandomColor(),
+    meta: {
+      toMain: true,
+      ignoreSelf: true
+    }
+  });
+};
 
 const postRotation = count => {
   store.dispatch({
@@ -21,7 +39,7 @@ const postRotation = count => {
       toMain: true,
       ignoreSelf: true,
       delay: {
-        pingCount: count + 60
+        pingCount: count + 2
       }
     }
   });

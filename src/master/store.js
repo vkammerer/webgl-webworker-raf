@@ -4,12 +4,12 @@ import { createLogger } from "redux-logger";
 import { createMainMiddleware } from "../../../redux-postmessage-raf";
 import { slaveWorker } from "./slaveWorker";
 import { common } from "../common/reducers/common";
-import { master } from "./reducers/master";
+import { css } from "./reducers/css";
 import { rotation } from "./reducers/rotation";
 
 const reducers = combineReducers({
   common,
-  master,
+  css,
   rotation
 });
 
@@ -17,7 +17,7 @@ const reducers = combineReducers({
 const messagerMiddleware = createMainMiddleware(slaveWorker);
 
 const logger = createLogger({
-  predicate: () => false,
+  predicate: (getState, action) => action.type !== "ROTATION",
   collapsed: true
 });
 
